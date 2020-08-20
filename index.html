@@ -1,0 +1,55 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"></meta>
+<body>
+hellooo 
+
+
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>
+debugger;
+/*embedded_svc.settings.useCustomAuthentication=false;
+embedded_svc.settings.loginClientId='3MVG9d8..z.hDcPKHDsE5ph02ygEZ5ZP1zF_eVOrfyFnORiyesXIkTMipniwfbUbQQRg70EBKnWvHzP7MO9OU';
+embedded_svc.settings.loginRedirectURL	='https://login.salesforce.com';
+embedded_svc.settings.loginTargetQuerySelector	= '#salesforce-login';
+embedded_svc.settings.authenticationStartLabel	='you can begin a chat';*/
+
+
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+
+		
+
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		embedded_svc.init(
+			'https://liveagentsdl-dev-ed.my.salesforce.com',
+			'https://omni-channella-developer-edition.ap5.force.com/sites',
+			gslbBaseURL,
+			'00D7F000004cLiF',
+			'SnapIn',
+			{
+				baseLiveAgentContentURL: 'https://c.la1-c1-hnd.salesforceliveagent.com/content',
+				deploymentId: '5727F0000004r1d',
+				buttonId: '5737F0000004lnf',
+				baseLiveAgentURL: 'https://d.la1-c1-hnd.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04I7F000000kBIlUAM_1724220b197',
+				isOfflineSupportEnabled: false
+			}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://liveagentsdl-dev-ed.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
+</body>
+</html>
